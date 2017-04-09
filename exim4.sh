@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ROOTMAIL=kenta.saito@sagittar.org
+ROOTMAIL=kentasaito77@gmail.com
 
 # Exim4
 apt install -y exim4
