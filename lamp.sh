@@ -11,8 +11,8 @@ echo "mysql-server mysql-server/root_password_again password $MYSQLPW" | sudo de
 apt-get -y install mysql-server
 cp -a /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf.orig
 sed -i 's/\[mysqld\]/[mysqld]\ncharacter-set-server = utf8/' /etc/mysql/mysql.conf.d/mysqld.cnf
+echo 'UPDATE `mysql`.`user` SET `plugin`="mysql_native_password" WHERE `User`="root"; FLUSH PRIVILEGES;' | mysql -p$MYSQLPW
 service mysql restart
-echo "show variables like 'chara%';" | mysql -p$MYSQLPW
 
 # PHP7.0
 apt install -y libapache2-mod-php7.0
