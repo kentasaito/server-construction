@@ -4,6 +4,7 @@
 
 # Apache2
 apt install -y apache2
+chsh -s /bin/bash www-data
 
 # MySQL5.7
 echo "mysql-server mysql-server/root_password password $MYSQLPW" | sudo debconf-set-selections
