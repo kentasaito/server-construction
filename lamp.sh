@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MYSQLPW=
+. ./variables.sh
 
 # Apache2
 apt install -y apache2

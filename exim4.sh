@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ROOTMAIL=kentasaito77@gmail.com
+. ./variables.sh
 
 # Exim4
 apt install -y exim4
