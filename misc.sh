@@ -4,6 +4,7 @@
 # Ubuntu 16.04.2 x64
 # $5/mo
 # Singapore 1
+# Monitoring
 # Kenta Saito
 # sagittar.org
 

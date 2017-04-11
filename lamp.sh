@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MYSQLPW=root
+MYSQLPW=
 
 # Apache2
 apt install -y apache2
