@@ -21,3 +21,6 @@ update-alternatives --set editor /usr/bin/vim.basic
 # 自動アップデート時にメール通知
 # 16.04を放置して調べる
 sed -i 's#//Unattended-Upgrade::Mail "root";#Unattended-Upgrade::Mail "root";#' /etc/apt/apt.conf.d/50unattended-upgrades
+
+# composer
+apt install composer
