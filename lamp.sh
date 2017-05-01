@@ -21,6 +21,7 @@ apt install -y libapache2-mod-php7.0
 apt install -y php7.0-mysql
 
 # Apacheの再起動
+a2enmod auth_digest
 a2enmod ssl
 a2enmod rewrite
 service apache2 restart
