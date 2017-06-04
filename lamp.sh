@@ -22,6 +22,7 @@ apt install -y php7.0-mysql
 apt install -y php7.0-xml
 
 # composer
+apt install -y zip
 apt install -y composer
 
 # Apacheの再起動
