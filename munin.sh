@@ -2,4 +2,6 @@
 
 . ./variables.sh
 
-apt install munin
+apt install -y munin
+apt install -y munin-node
+apt install -y munin-plugins-extra
