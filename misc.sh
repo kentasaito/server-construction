@@ -21,3 +21,12 @@ update-alternatives --set editor /usr/bin/vim.basic
 # 自動アップデート時にメール通知
 # 16.04を放置して調べる
 sed -i 's#//Unattended-Upgrade::Mail "root";#Unattended-Upgrade::Mail "root";#' /etc/apt/apt.conf.d/50unattended-upgrades
+
+# スワップ
+mkdir /var/swap
+dd if=/dev/zero of=/var/swap/swap0 bs=2M count=2048
+chmod 600 /var/swap/swap0
+mkswap /var/swap/swap0
+swapon /var/swap/swap0
+vi /etc/fstab
+cat /proc/swaps
