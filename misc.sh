@@ -30,3 +30,6 @@ mkswap /var/swap/swap0
 swapon /var/swap/swap0
 vi /etc/fstab
 cat /proc/swaps
+
+# AT
+apt -y install at
