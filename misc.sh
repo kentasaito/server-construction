@@ -8,9 +8,6 @@
 # Kenta Saito
 # sagittar.org
 
-# フォント
-fc-cache
-
 # apt
 apt update
 
