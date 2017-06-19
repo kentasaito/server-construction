@@ -28,8 +28,7 @@ dd if=/dev/zero of=/var/swap/swap0 bs=2M count=2048
 chmod 600 /var/swap/swap0
 mkswap /var/swap/swap0
 swapon /var/swap/swap0
-vi /etc/fstab
-# /var/swap/swap0 swap swap defaults 0 0
+echo /var/swap/swap0 swap swap defaults 0 0 >> /etc/fstab
 cat /proc/swaps
 
 # AT
