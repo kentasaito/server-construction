@@ -29,6 +29,7 @@ chmod 600 /var/swap/swap0
 mkswap /var/swap/swap0
 swapon /var/swap/swap0
 vi /etc/fstab
+# /var/swap/swap0 swap swap defaults 0 0
 cat /proc/swaps
 
 # AT
