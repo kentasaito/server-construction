@@ -30,6 +30,8 @@ cat << EOS | patch -u /etc/apache2/sites-available/000-default.conf
  
  # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 EOS
+touch /var/www/.htdigest
+chown www-data:www-data /var/www/.htdigest
 
 # MySQL5.7
 echo "mysql-server mysql-server/root_password password $MYSQLPW" | sudo debconf-set-selections
