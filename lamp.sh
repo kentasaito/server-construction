@@ -5,6 +5,32 @@
 # Apache2
 apt install -y apache2
 chsh -s /bin/bash www-data
+cp -r /root/.ssh /var/www
+chown -R www-data:www-data /var/www
+cp -a /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.orig
+cat << EOS | patch -u /etc/apache2/sites-available/000-default.conf
+--- 000-default.conf.orig	2016-03-19 18:48:35.000000000 +0900
++++ 000-default.conf	2017-06-19 22:05:43.694143039 +0900
+@@ -26,6 +26,17 @@
+ 	# following line enables the CGI configuration for this host only
+ 	# after it has been globally disabled with "a2disconf".
+ 	#Include conf-available/serve-cgi-bin.conf
++	<Directory "/var/www/html">
++		Options Indexes FollowSymLinks MultiViews
++		AllowOverride All
++		Order allow,deny
++		allow from all
++		AuthType Digest
++		AuthName "control"
++		AuthDigestDomain /
++		AuthUserFile /var/www/.htdigest
++		Require valid-user
++	</Directory>
+ </VirtualHost>
+ 
+ # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+EOS
+read
 
 # MySQL5.7
 echo "mysql-server mysql-server/root_password password $MYSQLPW" | sudo debconf-set-selections
@@ -36,7 +62,3 @@ a2enmod auth_digest
 a2enmod ssl
 a2enmod rewrite
 service apache2 restart
-
-# www-dataユーザ
-cp -r /root/.ssh /var/www
-chown -R www-data:www-data /var/www
