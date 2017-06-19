@@ -20,6 +20,7 @@ echo 'SET password FOR root@localhost=password("");' | mysql -p$MYSQLPW
 apt install -y libapache2-mod-php7.0
 apt install -y php7.0-mysql
 apt install -y php7.0-xml
+apt install -y php7.0-mbstring
 
 # composer
 apt install -y zip
