@@ -36,3 +36,7 @@ a2enmod auth_digest
 a2enmod ssl
 a2enmod rewrite
 service apache2 restart
+
+# www-dataユーザ
+cp -r .ssh /var/www
+chown -R www-data:www-data /var/www
