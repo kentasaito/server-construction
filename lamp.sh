@@ -38,5 +38,5 @@ a2enmod rewrite
 service apache2 restart
 
 # www-dataユーザ
-cp -r .ssh /var/www
+cp -r /root/.ssh /var/www
 chown -R www-data:www-data /var/www
