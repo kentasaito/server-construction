@@ -7,11 +7,33 @@ apt install -y apache2
 chsh -s /bin/bash www-data
 cp -r /root/.ssh /var/www
 chown -R www-data:www-data /var/www
+cp -a /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf.orig
+cat << EOS | patch -u /etc/apache2/sites-available/default-ssl.conf
+--- default-ssl.conf.orig	2017-06-20 20:08:17.163426534 +0900
++++ default-ssl.conf	2017-06-20 20:15:50.172346009 +0900
+@@ -1,5 +1,16 @@
+ <IfModule mod_ssl.c>
+ 	<VirtualHost _default_:443>
++		<Directory "/var/www/html">
++			Options Indexes FollowSymLinks MultiViews
++			AllowOverride All
++			Order allow,deny
++			allow from all
++			AuthType Digest
++			AuthName "control"
++			AuthDigestDomain /
++			AuthUserFile /var/www/.htdigest
++			Require valid-user
++		</Directory>
+ 		ServerAdmin webmaster@localhost
+ 
+ 		DocumentRoot /var/www/html
+EOS
 cp -a /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.orig
 cat << EOS | patch -u /etc/apache2/sites-available/000-default.conf
 --- 000-default.conf.orig	2016-03-19 18:48:35.000000000 +0900
-+++ 000-default.conf	2017-06-20 17:29:34.775132634 +0900
-@@ -26,6 +26,27 @@
++++ 000-default.conf	2017-06-20 20:21:53.070988838 +0900
+@@ -26,6 +26,17 @@
  	# following line enables the CGI configuration for this host only
  	# after it has been globally disabled with "a2disconf".
  	#Include conf-available/serve-cgi-bin.conf
@@ -26,16 +48,6 @@ cat << EOS | patch -u /etc/apache2/sites-available/000-default.conf
 +		AuthUserFile /var/www/.htdigest
 +		Require valid-user
 +	</Directory>
-+	<LocationMatch /bitbucket.php>
-+		Order allow,deny
-+		Allow from all
-+		Satisfy Any
-+	</LocationMatch>
-+	<LocationMatch /system/direct>
-+		Order allow,deny
-+		Allow from all
-+		Satisfy Any
-+	</LocationMatch>
  </VirtualHost>
  
  # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
