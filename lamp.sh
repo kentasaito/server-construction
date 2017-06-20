@@ -9,9 +9,9 @@ cp -r /root/.ssh /var/www
 chown -R www-data:www-data /var/www
 cp -a /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.orig
 cat << EOS | patch -u /etc/apache2/sites-available/000-default.conf
---- 000-default.conf.orig	2017-06-20 10:07:08.553032380 +0900
-+++ 000-default.conf	2017-06-20 10:08:21.136697291 +0900
-@@ -26,6 +26,22 @@
+--- 000-default.conf.orig	2016-03-19 18:48:35.000000000 +0900
++++ 000-default.conf	2017-06-20 17:29:34.775132634 +0900
+@@ -26,6 +26,27 @@
  	# following line enables the CGI configuration for this host only
  	# after it has been globally disabled with "a2disconf".
  	#Include conf-available/serve-cgi-bin.conf
@@ -26,6 +26,11 @@ cat << EOS | patch -u /etc/apache2/sites-available/000-default.conf
 +		AuthUserFile /var/www/.htdigest
 +		Require valid-user
 +	</Directory>
++	<LocationMatch /bitbucket.php>
++		Order allow,deny
++		Allow from all
++		Satisfy Any
++	</LocationMatch>
 +	<LocationMatch /system/direct>
 +		Order allow,deny
 +		Allow from all
