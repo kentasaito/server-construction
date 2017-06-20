@@ -9,7 +9,7 @@
 # sagittar.org
 
 # apt
-# apt update
+apt update
 
 # タイムゾーンを東京へ
 timedatectl set-timezone Asia/Tokyo
