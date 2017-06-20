@@ -29,6 +29,7 @@ cat << EOS | patch -u /etc/apache2/sites-available/default-ssl.conf
  
  		DocumentRoot /var/www/html
 EOS
+a2ensite default-ssl.conf
 cp -a /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.orig
 cat << EOS | patch -u /etc/apache2/sites-available/000-default.conf
 --- 000-default.conf.orig	2016-03-19 18:48:35.000000000 +0900
