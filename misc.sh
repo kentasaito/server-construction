@@ -33,6 +33,3 @@ mkswap /var/swap/swap0
 swapon /var/swap/swap0
 echo /var/swap/swap0 swap swap defaults 0 0 >> /etc/fstab
 cat /proc/swaps
-
-# AT
-apt -y install at
